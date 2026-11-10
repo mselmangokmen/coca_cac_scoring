@@ -1,0 +1,15 @@
+# Lower bounds = the oldest versions tested (requirements-exact.txt). Also tested with the newest versions pip
+# resolved on 2026-11-05: Python 3.11, torch 2.6.0 (cu124), transformers 5.22.1, numpy 2.4.6, pandas 3.1.1,
+# scikit-learn 1.9.1, scikit-image 0.26.0, opencv 5.0 (README, "Other library versions").
+torch>=2.6
+transformers>=4.56
+numpy>=2.2
+scipy>=1.16
+scikit-learn>=1.7
+scikit-image>=0.25
+opencv-python-headless>=4.12
+pydicom>=3.0
+pandas>=2.3
+openpyxl>=3.1
+matplotlib>=3.10
+threadpoolctl>=3.6

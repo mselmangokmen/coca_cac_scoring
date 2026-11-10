@@ -1,0 +1,30 @@
+features outputs/features/curia_L7/coca_nongated.npz: encoder curia L7, cohort nongated
+train 165 patients / 11323 slices, test 40 patients / 2564 slices
+settings: hidden=256, dropout=0.1, epochs=100, lr=0.001, batch_volumes=16, thickness_ref=3.0, tail_weight=True, seed=42
+training the head: 165 volumes, 100 epochs, 16 volumes per batch
+  epoch   1/100  loss 5.1692
+  epoch  11/100  loss 2.7785
+  epoch  21/100  loss 1.6381
+  epoch  31/100  loss 0.9691
+  epoch  41/100  loss 0.5708
+  epoch  51/100  loss 0.3735
+  epoch  61/100  loss 0.3411
+  epoch  71/100  loss 0.2768
+  epoch  81/100  loss 0.2595
+  epoch  91/100  loss 0.2443
+  epoch 100/100  loss 0.2355
+============================================================================================
+COCA nongated, test side: head trained on the nongated train side, encoder curia L7
+============================================================================================
+patients 40   kappa 0.660 [0.476, 0.805]   accuracy 0.650   AUROC(>10) 0.897   macro-F1 0.666
+MAE 104.4   RMSE 281.2   logRMSE 1.900   ICC(A,1) 0.709 [0.513, 0.852]   R2 0.629   bias +0.99  LoA [-2.23, 4.21]
+  band         n    sens    spec    prec      F1      MAE
+  0-10        21   0.524   1.000   1.000   0.688     28.2
+  11-100       8   0.875   0.688   0.412   0.560     13.6
+  101-400      6   0.833   0.882   0.556   0.667     63.9
+  400+         5   0.600   1.000   1.000   0.750    618.5
+  confusion (rows = reference, columns = prediction): 0-10  11-100  101-400  400+
+    0-10          11      9      1      0
+    11-100         0      7      1      0
+    101-400        0      1      5      0
+    400+           0      0      2      3

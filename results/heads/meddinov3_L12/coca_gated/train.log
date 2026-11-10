@@ -1,0 +1,30 @@
+features outputs/features/meddinov3_L12/coca_gated.npz: encoder meddinov3 L12, cohort gated
+train 354 patients / 18054 slices, test 89 patients / 4641 slices
+settings: hidden=256, dropout=0.1, epochs=100, lr=0.001, batch_volumes=16, thickness_ref=3.0, tail_weight=True, seed=42
+training the head: 354 volumes, 100 epochs, 16 volumes per batch
+  epoch   1/100  loss 6.2538
+  epoch  11/100  loss 2.2630
+  epoch  21/100  loss 1.0645
+  epoch  31/100  loss 0.8011
+  epoch  41/100  loss 0.6560
+  epoch  51/100  loss 0.4834
+  epoch  61/100  loss 0.4185
+  epoch  71/100  loss 0.3844
+  epoch  81/100  loss 0.3614
+  epoch  91/100  loss 0.3649
+  epoch 100/100  loss 0.3510
+============================================================================================
+COCA gated, test side: head trained on the gated train side, encoder meddinov3 L12
+============================================================================================
+patients 89   kappa 0.581 [0.451, 0.699]   accuracy 0.640   AUROC(>10) 0.741   macro-F1 0.613
+MAE 170.8   RMSE 342.8   logRMSE 1.582   ICC(A,1) 0.670 [0.474, 0.834]   R2 0.492   bias +0.41  LoA [-2.60, 3.42]
+  band         n    sens    spec    prec      F1      MAE
+  0-10        16   0.312   0.945   0.556   0.400    176.9
+  11-100      28   0.536   0.918   0.750   0.625     66.5
+  101-400     21   0.905   0.721   0.500   0.644     76.6
+  400+        24   0.750   0.938   0.818   0.783    370.9
+  confusion (rows = reference, columns = prediction): 0-10  11-100  101-400  400+
+    0-10           5      4      5      2
+    11-100         4     15      8      1
+    101-400        0      1     19      1
+    400+           0      0      6     18

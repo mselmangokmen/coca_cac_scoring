@@ -1,0 +1,6 @@
+outputs/
+weights/
+dinov3/
+__pycache__/
+*.pyc
+.DS_Store

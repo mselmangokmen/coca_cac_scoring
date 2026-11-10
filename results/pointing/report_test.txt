@@ -1,0 +1,20 @@
+====================================================================================================
+Calcium localization on gated Stanford COCA (frozen encoders, class-token attention)
+====================================================================================================
+pool: 1287 slices (649 calcium-bearing, 638 calcium-free) from 85 patients, split side 'test'
+
+  encoder       L   grid  CLS AUROC  attn AUROC  pointing  lesion rec  top-32 cov  FA@sens.8
+  ------------------------------------------------------------------------------------------
+  Curia        L7  32x32      0.924       0.987     0.495       0.450       0.921      0.930
+  MedDINOv3   L11  32x32      0.799       0.943     0.371       0.328       0.584      1.000
+  HU>130        -  32x32        n/a       0.931     0.037       0.033       0.146      1.000
+  uniform       -  32x32        n/a       0.508     0.006       0.006       0.033      1.000
+
+pointing / CLS AUROC by layer
+  Curia       pointing L1:0.000 L2:0.000 L3:0.000 L4:0.129 L5:0.185 L6:0.535 L7:0.495 L8:0.325 L9:0.279 L10:0.051 L11:0.014 L12:0.020   peak L6
+              CLS      L1:0.607 L2:0.644 L3:0.679 L4:0.756 L5:0.849 L6:0.924 L7:0.924 L8:0.924 L9:0.934 L10:0.925 L11:0.912 L12:0.903
+  MedDINOv3   pointing L1:0.002 L2:0.008 L3:0.003 L4:0.003 L5:0.014 L6:0.120 L7:0.055 L8:0.128 L9:0.122 L10:0.162 L11:0.371 L12:0.219   peak L11
+              CLS      L1:0.514 L2:0.595 L3:0.630 L4:0.632 L5:0.661 L6:0.718 L7:0.767 L8:0.771 L9:0.819 L10:0.802 L11:0.799 L12:0.765
+
+The HU>130 baseline scores each patch by its peak HU; the uniform baseline is a constant map with a
+fixed random tie-break. A coarser grid makes a pointing hit easier, so compare encoders on one grid.

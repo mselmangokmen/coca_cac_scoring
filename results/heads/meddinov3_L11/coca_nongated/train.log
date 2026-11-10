@@ -1,0 +1,30 @@
+features outputs/features/meddinov3_L11/coca_nongated.npz: encoder meddinov3 L11, cohort nongated
+train 165 patients / 11323 slices, test 40 patients / 2564 slices
+settings: hidden=256, dropout=0.1, epochs=100, lr=0.001, batch_volumes=16, thickness_ref=3.0, tail_weight=True, seed=42
+training the head: 165 volumes, 100 epochs, 16 volumes per batch
+  epoch   1/100  loss 5.1448
+  epoch  11/100  loss 3.1179
+  epoch  21/100  loss 1.7813
+  epoch  31/100  loss 1.0813
+  epoch  41/100  loss 0.6640
+  epoch  51/100  loss 0.4649
+  epoch  61/100  loss 0.5220
+  epoch  71/100  loss 0.3580
+  epoch  81/100  loss 0.3389
+  epoch  91/100  loss 0.3219
+  epoch 100/100  loss 0.3219
+============================================================================================
+COCA nongated, test side: head trained on the nongated train side, encoder meddinov3 L11
+============================================================================================
+patients 40   kappa 0.747 [0.584, 0.868]   accuracy 0.725   AUROC(>10) 0.932   macro-F1 0.712
+MAE 118.8   RMSE 366.7   logRMSE 1.570   ICC(A,1) 0.795 [0.635, 0.899]   R2 0.701   bias +0.58  LoA [-2.32, 3.48]
+  band         n    sens    spec    prec      F1      MAE
+  0-10        21   0.714   0.947   0.938   0.811     13.9
+  11-100       8   0.750   0.781   0.462   0.571     27.3
+  101-400      6   0.833   0.912   0.625   0.714     88.6
+  400+         5   0.600   1.000   1.000   0.750    742.3
+  confusion (rows = reference, columns = prediction): 0-10  11-100  101-400  400+
+    0-10          15      6      0      0
+    11-100         1      6      1      0
+    101-400        0      1      5      0
+    400+           0      0      2      3

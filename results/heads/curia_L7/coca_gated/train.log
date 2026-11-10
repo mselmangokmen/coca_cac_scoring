@@ -1,0 +1,30 @@
+features outputs/features/curia_L7/coca_gated.npz: encoder curia L7, cohort gated
+train 354 patients / 18054 slices, test 89 patients / 4641 slices
+settings: hidden=256, dropout=0.1, epochs=100, lr=0.001, batch_volumes=16, thickness_ref=3.0, tail_weight=True, seed=42
+training the head: 354 volumes, 100 epochs, 16 volumes per batch
+  epoch   1/100  loss 6.2603
+  epoch  11/100  loss 1.4180
+  epoch  21/100  loss 0.5981
+  epoch  31/100  loss 0.4280
+  epoch  41/100  loss 0.3329
+  epoch  51/100  loss 0.2790
+  epoch  61/100  loss 0.2401
+  epoch  71/100  loss 0.2236
+  epoch  81/100  loss 0.2176
+  epoch  91/100  loss 0.2092
+  epoch 100/100  loss 0.2050
+============================================================================================
+COCA gated, test side: head trained on the gated train side, encoder curia L7
+============================================================================================
+patients 89   kappa 0.762 [0.659, 0.853]   accuracy 0.775   AUROC(>10) 0.822   macro-F1 0.748
+MAE 119.8   RMSE 283.5   logRMSE 1.362   ICC(A,1) 0.772 [0.625, 0.892]   R2 0.622   bias +0.34  LoA [-2.26, 2.94]
+  band         n    sens    spec    prec      F1      MAE
+  0-10        16   0.438   0.959   0.700   0.538     67.6
+  11-100      28   0.786   0.902   0.786   0.786     79.3
+  101-400     21   0.952   0.868   0.690   0.800     43.2
+  400+        24   0.833   0.969   0.909   0.870    268.8
+  confusion (rows = reference, columns = prediction): 0-10  11-100  101-400  400+
+    0-10           7      6      3      0
+    11-100         3     22      2      1
+    101-400        0      0     20      1
+    400+           0      0      4     20
